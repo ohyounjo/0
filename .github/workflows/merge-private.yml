@@ -1,0 +1,54 @@
+name: Merge Private Code
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Hello, GitHub Actions!'
+
+  pwd-ls:
+  name: PWD & LS
+  runs-on: ubuntu-latest
+  steps:
+      - name: Print working directory
+      run: pwd
+      - name: List files
+      run: ls -al
+
+#  build:
+#    runs-on: ubuntu-latest
+
+#    steps:
+#    # 1. 공개 레포지토리 체크아웃
+ #   - name: Checkout Public Repository
+ #     uses: actions/checkout@v3
+
+ #   # 2. 비공개 레포지토리 클론
+ #   - name: Clone Private Repository
+ #     env:
+ #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ #     run: |
+ #       git clone https://x-access-token:${GITHUB_TOKEN}@github.com/ohyounjo/<private-repo>.git private-repo
+ #       cp -r private-repo/src/비공개소스들 src/
+ #      cp -r private-repo/configs configs/
+ #       cp -r private-repo/secrets secrets/
+ #       cp -r private-repo/internal-scripts internal-scripts/
+
+    # 3. 조합된 코드 빌드
+ #   - name: Build and Verify
+ #     run: |
+ #       echo "Building the project..."
+ #       # 예시: npm, gradle, 또는 make 사용
+ #       make build
+
+ #   # 4. 결과물 배포 (옵션)
+ #   - name: Deploy to Server
+ #     run: |
+ #       echo "Deploying to server..."
+ #       # rsync, scp 등을 사용해 서버에 업로드
+ #       rsync -av ./build/ user@server:/path/to/deploy
